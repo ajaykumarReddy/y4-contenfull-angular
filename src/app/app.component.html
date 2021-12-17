@@ -2,7 +2,7 @@
   <div class="container">
     <h1>Last articles</h1>
     <div class="card-container">
-      <div class="card" *ngFor="let blog of blogPosts">
+      <div class="card" *ngFor="let blog of blogPosts; trackBy:trackByNo">
         <img class="card-img-top" [src]="blog.fields.previewImage.fields.file.url" alt="blog image" srcset="">
         <div class="card-body">
           <h5 class="card-title y4-ellipsis">{{ blog.fields.author.fields.name }}</h5>

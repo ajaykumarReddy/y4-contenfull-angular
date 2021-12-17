@@ -22,4 +22,8 @@ export class AppComponent {
     const moreBlogs = await this.contentfulService.getProducts(this.noOfRecords, this.blogPosts.length);
     this.blogPosts = [...this.blogPosts, ...moreBlogs];
   }
+
+  trackByNo(index: number): number {
+    return index;
+  }
 }
