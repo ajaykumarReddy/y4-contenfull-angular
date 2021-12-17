@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Entry } from 'contentful';
+import { ContentfulService } from './contentful.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'y42-contentful-articles-angular';
+  blogPosts: any[] = [];
+  noOfRecords = 3;
+
+  constructor(private contentfulService: ContentfulService) { }
+
+  async ngOnInit() {
+    this.loadMore();
+  }
+
+  async loadMore() {
+    const moreBlogs = await this.contentfulService.getProducts(this.noOfRecords, this.blogPosts.length);
+    this.blogPosts = [...this.blogPosts, ...moreBlogs];
+  }
 }
