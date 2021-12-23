@@ -10,8 +10,14 @@
         </div>
       </div>
     </div>
-    <div class="load-more-btn">
+    <div class="load-more-btn" *ngIf="!(loading$ | async) as loader">
       <button class="btn btn-primary" (click)="loadMore()">Loading more</button>
     </div>
   </div>
 </main>
+
+<ng-container *ngIf="loading$ | async">
+  <div class="spinner-background">
+    <div class="loader spinner"></div>
+  </div>
+</ng-container>
